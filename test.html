@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Create a container div for the grid
+const container = document.createElement('div');
+document.body.appendChild(container);
+
+// Set the container to a grid layout with 16 rows and 16 columns
+container.style.cssText = `
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(16, 1fr);
+  gap: 1px;
+  width: 400px;  /* adjust as needed */
+  height: 400px; /* adjust as needed */
+`;
+
+// Create 16 x 16 = 256 square divs
+for (let i = 0; i < 16 * 16; i++) {
+  const square = document.createElement('div');
+  square.style.cssText = `
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    width: 100%;  /* Makes each square responsive */
+    height: 100%; /* Makes each square responsive */
+  `;
+  container.appendChild(square);
+}
+    </script>
+</body>
+</html>

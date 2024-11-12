@@ -24,33 +24,50 @@ Object.assign(btn.style, {
   });
 
   btn.addEventListener('click', () =>{
-    prompt('how many lines do u want choose between(2- 100)')
-  })
+    let rowColm=prompt('how many lines do u want choose between(2- 100)')
+    rowColm= parseInt(rowColm,10)
+    introduction.style.display='none'
+    const container= document.createElement('div');
+    container.classList.add('contain')
+    document.body.appendChild(container)
+    container.style.cssText=`
+    display: grid;
+    grid-template-columns: repeat(${rowColm}, 1fr);
+    grid-template-rows: repeat(${rowColm}, 1fr);
+    gap: 1px;
+    width: 400px;  
+    height: 400px;
+    `
+    Object.assign(container.style,{
+      backgroundColor:'#ddd',
+      // border:'2px solid',
+      margin: '20px 100px'  
+    })
+    for(let i = 0; i < rowColm ; i++){
+      const square= document.createElement('div');
+      square.style.cssText=`
+      background-color:#fff;
+      border :1px solid #ccc;
+      color: white;
+      width: 100%;
+      height: 100%`;
+      container.appendChild(square)
+    }
+    
+    })
 
 
-  const container= document.createElement('div')
-  document.body.appendChild(container)
+  
 
-  container.style.cssText=`
-  display: grid;
-  grid-template-columns: repeat(16, 1fr);
-  grid-template-rows: repeat(16, 1fr);
-  gap: 1px;
-  width: 400px;  
-  height: 400px;
-  `
-  Object.assign(container.style,{
-    backgroundColor:'#ddd',
-    // border:'2px solid',
-    margin: '20px 100px'  
-  })
-  for(let i =0 ; i < 16*16  ; i++){
-    const square= document.createElement('div');
-    square.style.cssText = `
-    background-color: #fff;
-    border: 1px solid #ccc;  /* Add border to each square */
-    width: 100%;
-    height: 100%;
-  `;
-  container.appendChild(square);
-  }
+  
+
+  // for(let i =0 ; i < 16*16  ; i++){
+  //   const square= document.createElement('div');
+  //   square.style.cssText = `
+  //   background-color: #fff;
+  //   border: 1px solid #ccc;  /* Add border to each square */
+  //   width: 100%;
+  //   height: 100%;
+  // `;
+  // container.appendChild(square);
+  // }
