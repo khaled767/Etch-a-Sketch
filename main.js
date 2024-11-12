@@ -34,40 +34,31 @@ Object.assign(btn.style, {
     display: grid;
     grid-template-columns: repeat(${rowColm}, 1fr);
     grid-template-rows: repeat(${rowColm}, 1fr);
-    gap: 1px;
-    width: 400px;  
-    height: 400px;
-    `
+    gap: 1px;`
+
     Object.assign(container.style,{
       backgroundColor:'#ddd',
-      // border:'2px solid',
-      margin: '20px 100px'  
+      width: '80%',
+      height:' 80vh',
+      marginTop: '80px',
+      marginLeft:'120px'
     })
-    for(let i = 0; i < rowColm ; i++){
+    for(let i = 0; i < rowColm * rowColm ; i++){
       const square= document.createElement('div');
+      square.classList.add('square')
       square.style.cssText=`
       background-color:#fff;
-      border :1px solid #ccc;
       color: white;
-      width: 100%;
-      height: 100%`;
+      border :1px solid #ccc;
+       width: 80%;
+       height: 80%;
+      `
       container.appendChild(square)
     }
     
     })
-
-
-  
+// 
 
   
 
-  // for(let i =0 ; i < 16*16  ; i++){
-  //   const square= document.createElement('div');
-  //   square.style.cssText = `
-  //   background-color: #fff;
-  //   border: 1px solid #ccc;  /* Add border to each square */
-  //   width: 100%;
-  //   height: 100%;
-  // `;
-  // container.appendChild(square);
-  // }
+  
