@@ -6,6 +6,7 @@ const introduction= document.createElement('div');
 const h1= document.createElement('h1');
 const btn= document.createElement('button');
 
+
 h1.textContent='Welcome to "Etch a Sketch" game';
 btn.textContent="Click Me"
 introduction.append(h1, btn);
@@ -37,7 +38,7 @@ Object.assign(btn.style, {
     gap: 1px;`
 
     Object.assign(container.style,{
-      backgroundColor:'#ddd',
+      // backgroundColor:'#ddd',
       width: '80%',
       height:' 80vh',
       marginTop: '80px',
@@ -50,13 +51,20 @@ Object.assign(btn.style, {
       background-color:#fff;
       color: white;
       border :1px solid #ccc;
-       width: 80%;
-       height: 80%;
+      width: 60%;
+      height: 80%;
+      margin:1px;
+      cursor:pointer;
       `
-      container.appendChild(square)
+      container.appendChild(square)  
+      square.addEventListener('mouseover', () => {
+      square.style.backgroundColor='black';
+      });
     }
     
-    })
+    
+  })  
+    
 // 
 
   
