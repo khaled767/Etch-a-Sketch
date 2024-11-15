@@ -1,7 +1,3 @@
-// first thing Create div has 2 elemnts h2
-// and button
-
-
 const introduction= document.createElement('div');
 const h1= document.createElement('h1');
 const btn= document.createElement('button');
@@ -12,6 +8,8 @@ btn.textContent="Click Me"
 introduction.append(h1, btn);
 
 document.body.appendChild(introduction)
+
+
 
 introduction.style.cssText = 'display: flex; flex-direction: column;align-items: center; ';
 Object.assign(btn.style, {
@@ -24,17 +22,21 @@ Object.assign(btn.style, {
     color: 'mintcream'
   });
 
-  btn.addEventListener('click', () =>{
-    let rowColm=prompt('how many lines do u want choose between(2- 100)')
-    rowColm= parseInt(rowColm,10)
+  
+
+function startOn(){
+  let rowColm=prompt('how many lines do u want choose between(1- 99)')
+  squreN= parseInt(rowColm,10);
+  if(!isNaN(squreN) && squreN >= 1 && squreN <= 99){
+    
     introduction.style.display='none'
     const container= document.createElement('div');
     container.classList.add('contain')
     document.body.appendChild(container)
     container.style.cssText=`
     display: grid;
-    grid-template-columns: repeat(${rowColm}, 1fr);
-    grid-template-rows: repeat(${rowColm}, 1fr);
+    grid-template-columns: repeat(${squreN}, 1fr);
+    grid-template-rows: repeat(${squreN}, 1fr);
     gap: 1px;`
 
     Object.assign(container.style,{
@@ -44,7 +46,7 @@ Object.assign(btn.style, {
       marginTop: '80px',
       marginLeft:'120px'
     })
-    for(let i = 0; i < rowColm * rowColm ; i++){
+    for(let i = 0; i < squreN * squreN ; i++){
       const square= document.createElement('div');
       square.classList.add('square')
       square.style.cssText=`
@@ -60,13 +62,13 @@ Object.assign(btn.style, {
       square.addEventListener('mouseover', () => {
       square.style.backgroundColor='black';
       });
-    }
-    
-    
-  })  
-    
-// 
+     }
+  }
+  else{
+    startOn()
+  }
+}
 
-  
-
-  
+btn.addEventListener('click', () =>{
+  startOn()
+})
