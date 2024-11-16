@@ -3,6 +3,7 @@ const h1= document.createElement('h1');
 const btn= document.createElement('button');
 
 
+
 h1.textContent='Welcome to "Etch a Sketch" game';
 btn.textContent="Click Me"
 introduction.append(h1, btn);
@@ -19,20 +20,22 @@ Object.assign(btn.style, {
     border: 'none',
     cursor: 'pointer',
     color: 'mintcream',
-    fontFamily:'cursive',
   });
 
   // h1 style desgin
   h1.style.color='#e833e9';
   h1.style.fontFamily=' cursive';
 
-function startOn(){
+  // -----------------------------------------
+
+  function startOn(){
+
   let rowColm=prompt('how many lines do u want choose between(1- 99)')
   squreN= parseInt(rowColm,10);
   if(!isNaN(squreN) && squreN >= 1 && squreN <= 99){
     introduction.style.display='none'
 
-    // -----------------------------------------
+
     const buttonsdiv= document.createElement('div');
 
 // Create and configure the RGB Color button
@@ -41,12 +44,10 @@ function startOn(){
 
 // Create and configure the Reset button
     let reset=document.createElement('button');
-    reset.textContent=' RESET';
-    reset.addEventListener('click', ()=> {
+    reset.textContent='RESET';
 
-    })
 
-// Create and configure the Exit button
+// Create and configure  the exitbtn
     const exitbtn=document.createElement('button')
     exitbtn.textContent='EXIT'
     buttonsdiv.append(rgbColor,reset,exitbtn)
@@ -85,7 +86,6 @@ buttons.forEach(button => {
       button.style.backgroundColor = 'rgb(222 128 229)';
   });
 });
-    // -----------------------------------------
 
     const container= document.createElement('div');
     container.classList.add('contain')
@@ -97,7 +97,6 @@ buttons.forEach(button => {
     gap: 1px;`
 
     Object.assign(container.style,{
-      // backgroundColor:'#ddd',
       width: '80%',
       height:' 80vh',
       marginTop: '60px',
@@ -117,10 +116,38 @@ buttons.forEach(button => {
       `
       container.appendChild(square)  
       square.addEventListener('mouseover', () => {
-      square.style.backgroundColor='black';
+      square.style.backgroundColor='#e98b9b';
       });
       
      }
+
+    //  handle the RGB Color
+    rgbColor.addEventListener('click', () =>{
+      const squares= document.querySelectorAll('.square')
+      squares.forEach(square =>{
+        square.addEventListener('mouseover', ()=>{ 
+          const randomColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+          square.style.backgroundColor = randomColor;
+        })
+      })
+    })
+
+    //  handle the RESET button
+    reset.addEventListener('click',() => {
+      const squares= document.querySelectorAll('.square')
+      squares.forEach(square =>{
+        square.style.backgroundColor='white';
+      });
+    });
+
+    // handle the EXIT button
+    exitbtn.addEventListener('click', () =>{
+      introduction.style.display='flex';
+      container.remove();
+      buttonsdiv.remove();
+      
+    })
+
   }
   else{
     startOn()
@@ -131,4 +158,6 @@ buttons.forEach(button => {
 btn.addEventListener('click', () =>{
   startOn()
 })
+
+
 
